@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassmorphic Glow Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #12121a);
+      color: #fff;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    header h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(45deg, #00ffe0, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 3rem 2rem;
+    }
+    .glass-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      backdrop-filter: blur(15px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #00ffe0;
+    }
+    p {
+      color: #cfd8dc;
+      line-height: 1.6;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>✨ Glassmorphic Portfolio</h1>
+  </header>
+
+  <section>
+    <div class="glass-card">
+      <h2>About Me</h2>
+      <p>I’m a creative full-stack developer who blends sleek UI/UX with clean backend APIs. I believe in the elegance of transparent designs and glowing animations to enhance interactivity.</p>
+    </div>
+
+    <div class="glass-card">
+      <h2>Projects</h2>
+      <p><strong>UI Builder Pro</strong>: Drag-and-drop UI component builder for designers. Built with React, Framer Motion, and Firebase.</p>
+      <p><strong>GlowMail</strong>: Email UI for dark mode lovers. Uses TailwindCSS and Node.js backend with real-time updates.</p>
+    </div>
+
+    <div class="glass-card">
+      <h2>Contact</h2>
+      <p>Email: glow.dev@portfoliohub.com</p>
+      <p>Twitter: @glowdev</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Glow Dev. Powered by Glassmorphism ✨
+  </footer>
+</body>
+</html>

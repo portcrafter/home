@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Terminal Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #0e0e0e;
+      color: #00ff88;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    header {
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid #00ff88;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #00ff88;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      max-width: 800px;
+      margin: auto;
+      padding: 4rem 2rem;
+    }
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px dashed #00ff88;
+      padding-bottom: 0.5rem;
+    }
+    section p {
+      line-height: 1.7;
+    }
+    .project {
+      margin-top: 2rem;
+      border: 1px solid #00ff88;
+      padding: 1.5rem;
+      border-radius: 8px;
+      background: #111;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #008855;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>$ whoami</h1>
+    <nav>
+      <a href="#about">about</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>&gt; about</h2>
+    <p>I am a backend engineer focused on high-performance services, automation tools, and terminal-first interfaces. I love building things that feel like they belong in a hacker movie.</p>
+  </section>
+
+  <section id="projects">
+    <h2>&gt; projects</h2>
+    <div class="project">
+      <h3>🔧 Terminal Task Manager</h3>
+      <p>A CLI-based todo manager with hotkeys, tagging, and time tracking — built in Python.</p>
+    </div>
+    <div class="project">
+      <h3>📡 DevOps Pipeline CLI</h3>
+      <p>End-to-end CI/CD runner with Git triggers, Docker builds, and notifications — runs entirely in terminal.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>&gt; contact</h2>
+    <p>Email: hacker.dev@terminalmail.io</p>
+    <p>GitHub: github.com/hackerdev</p>
+  </section>
+
+  <footer>
+    echo "Dark mode is the only mode."<br>
+    &copy; 2025 hacker.dev
+  </footer>
+</body>
+</html>

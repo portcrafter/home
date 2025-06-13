@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Animation Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #111;
+      color: #fff;
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      background: linear-gradient(45deg, #00d2ff, #3a47d5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 600px;
+      margin-top: 1rem;
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .cta {
+      margin-top: 2rem;
+      padding: 0.75rem 2rem;
+      background: #00d2ff;
+      border: none;
+      border-radius: 30px;
+      color: #000;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .cta:hover {
+      transform: scale(1.05);
+    }
+    .section {
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    .section h2 {
+      color: #00d2ff;
+      margin-bottom: 1rem;
+    }
+    .section p {
+      line-height: 1.6;
+      color: #bbb;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Hi, I'm Visual Dev</h1>
+    <p>I build animated, interactive, and expressive web experiences that leave lasting impressions.</p>
+    <button class="cta">Explore My Work</button>
+  </div>
+
+  <section class="section">
+    <h2>Featured Project</h2>
+    <p><strong>Landing Hero Builder</strong>: A hero section generator that combines responsive layouts, GSAP animation, and export-ready HTML.</p>
+  </section>
+
+  <section class="section">
+    <h2>Contact</h2>
+    <p>Email: visual.dev@heroify.com</p>
+    <p>
