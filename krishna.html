@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Krishna Sini Shibu | Portfolio
+  </title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <script crossorigin="anonymous" src="https://kit.fontawesome.com/a076d05399.js">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" referrerpolicy="no-referrer" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.6.1.min.js">
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js">
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+   </script>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
+   </link>
+  </link>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    text-decoration: none;
+}
+.max-width{
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+/* navbar styling */
+
+.navbar{
+    position:fixed;
+    width: 100%;
+    z-index: 9;
+    padding: 10px 0;
+    font-family: 'Ubuntu', 'sans-serif';
+    transition: all 0.3s ease-in;
+}
+.navbar.sticky{
+    padding: 6px 0;
+    background: #0b65de;
+}
+.navbar .max-width{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar .logo a{
+    font-size: 35px;
+    color: black;
+    font-weight: 600;
+}
+.navbar .logo span{
+    color: black;
+    transition: all 0.3s ease ;
+}
+/* .navbar.sticky .logo span{
+    color: azure;
+} */
+.navbar .menu li{
+    list-style: none;
+    display: inline-block;
+}
+.navbar .menu li a:hover{
+    color: black;
+}
+.navbar.sticky .menu li a:hover{
+    transition: all 0.3s ease;
+}
+.navbar .menu li a{
+    color: azure;
+    font-size: 18px;
+    font-weight: 300;
+    margin-left: 35px;
+    transition: color 0.3s ease;
+}
+.menu-btn {
+    color: azure;
+    font-size: 17px;
+    cursor: pointer;
+    display: none;
+}
+.navbar .menu-btn:hover{
+    color: black;
+}
+.navbar.sticky .menu-btn:hover{
+    color: black;
+    transition: all 0.3s ease; 
+}
+.scroll-up-btn{
+    position: fixed;
+    height: 40px;
+    width: 42px;
+    background: rgb(18, 59, 147);
+    right: 30px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 39px;
+    color: white;
+    z-index: 9999;
+    font-size: 30px;
+    border-radius: 6px;
+    border-bottom-width: 2px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.scroll-up-btn.show{
+    bottom: 30px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* home section styling */
+
+.home{
+    display: flex;
+    /* background: url("photos/banner1.jpg") no-repeat center; */
+    background-color: #2f4c80;
+    height: 100vh;
+    color: azure;
+    min-height: 500px;
+    
+    justify-content:space-between;
+    font-family: 'Ubuntu', 'sans-serif';
+}
+.home .max-width{
+    margin: auto 0 auto 40px;
+}
+
+.home .home-content .left{
+    width: calc(50% -30px);
+    
+}
+.home .home-content .left .text-1{
+    font-size: 30px;
+}
+.home .home-content .left .text-2{
+    font-size: 50px;
+    font-weight: 600;
+    margin-left: -3px;
+    margin: 10px 0;
+}
+
+.home .home-content .left .text-3{
+    font-size: 35px;
+    margin: 10px 0;
+}
+.home .home-content .left .text-3 span{
+    color: azure;
+    font-weight: 600;
+    font-size: 40px;
+}
+/* .home .home-content a{
+    background: crimson;
+    display: inline-block;
+    color: azure;
+    font-size: 20px;
+    padding: 5px 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: 2px solid crimson;
+    transition: all 0.3s ease;
+ } 
+.home .home-content a:hover{ 
+    background: none;
+    color: azure;
+}  */
+
+.home .right img{
+    height: 460px;
+    width: 430px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-left: 148px;
+    box-shadow: 0 0 100px whitesmoke;
+  
+}
+
+.right{
+    float: left;
+    width: 50%;
+}
+/* Similar content styling applied on sections */
+section{
+    padding: 80px 0;
+    background-color: #fff;
+}
+.about, .services, .skills, .works, .contact, .footer{
+    font-family: 'Poppins', 'sans-serif';
+}
+/* .home .home-content */
+.home .home-content,
+.about .about-content,
+.services .service-content,
+.skills .skills-content,
+.contact .contact-content{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+section .title{
+    position: relative;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    font-family: 'Ubuntu', 'sans-serif';
+}
+section .title::before{
+    content: "";
+    position:absolute;
+    bottom:0px ;
+    left: 50%;
+    width: 180px;
+    height: 2px;
+    background: black;
+    transform: translateX(-50%);
+}
+section .title::after{
+    position:absolute;
+    bottom:-10px ;
+    left: 50%;
+    font-size: 14px;
+    color: #2f4c80;
+    padding: 5px;
+    background: #fff ;
+    transform: translateX(-50%);
+}
+
+/* about section styling */
+
+
+.about .title::after{
+    content: "who i am"
+}
+.about .about-content .left img{
+    object-fit:cover;
+    height: 220px;
+    width: 220px;
+    border-radius: 10px;
+    margin-top: 35px;
+}
+.about .about-content .right{
+    width: 70%;
+    margin-top: 50px;
+}
+.about .about-content .right .text{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.about .about-content .right .text span{
+    color: #2f4c80;
+}
+.about .about-content .right p{
+    text-align: justify;
+}
+.about .about-content .right a{
+    background: #2f4c80;
+    display: inline-block;
+    color: azure;
+    font-size: 15px;
+    padding: 5px 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: 2px solid #2f4c80;
+    transition: all 0.3s ease;
+}
+.about .about-content .right a:hover{
+    background: none;
+    color: #2f4c80;
+    font-weight: 600;
+}
+
+/* services section styling */
+.services, .works{
+    background-color: #2f4c80;
+}
+.services .title::after{
+    content: "What I Know";
+    background: #B1B2FF;
+}
+.services .service-content .card{
+    width: calc(32% - 25px);
+    background:#fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px 25px;
+    margin-top: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #776ec5;
+    
+}
+.services .service-content .card:hover{
+    background:#9293de;
+}
+.services .service-content .card .box{
+    transition: all 0.3s ease;
+}
+.services .service-content .card:hover .box{
+    transform: scale(1.05);
+}
+.services .service-content .card i{
+    font-size: 30px;
+    color: rgb(169, 11, 42);
+}
+.services .service-content .card p{
+    font-size: 15px;
+}
+.services .service-content .card .text{
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    margin: 10px 0 7px 0;
+}
+
+/* skills section styling */
+
+.skills .title::after{
+    content: "What i Have";
+}
+.skills .skills-content .column{
+    width: calc(50% - 30px);
+    margin-top: 50px;
+}
+.skills .skills-content .left .text{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.skills .skills-content .left p{
+    text-align: justify;
+}
+/* .skills .skills-content .left a{
+    background: crimson;
+    display: inline-block;
+    color: azure;
+    font-size: 15px;
+    padding: 5px 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: 2px solid crimson;
+    transition: all 0.3s ease;
+}
+.skills .skills-content .left a:hover{
+    background: none;
+    color: crimson;
+    font-weight: 600;
+} */
+.skills .skills-content .right p{
+    background: #2f4c80;
+    display: inline-block;
+    color: azure;
+    font-size: 15px;
+    padding: 5px 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: 2px solid #2f4c80;
+    transition: all 0.3s ease;
+}
+.skills .skills-content .right p:hover{
+    background: none;
+    color: #2f4c80;
+    font-weight: 600;
+}
+.skills .skills-content .right .tab-titles{
+    display: flex;
+    margin:20px 0 40px;
+}
+
+.skills .skills-content .right .tab-links{
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    /* bottom: 30px; */
+}
+.tab-links::after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background: #2f4c80;
+    position:absolute;
+    left: 0;
+    bottom: -8px;
+    transition: all 0.3s ease;
+}
+.tab-links.active-link::after{
+    width: 50%;
+}
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0;
+}
+.tab-contents ul li span{
+    color: #2f4c80;
+    font-size: 14px;
+}
+.tab-contents{
+    display: none;
+}
+.tab-contents.active-tab{
+    display: block;
+}
+/* .skills .skills-content .right span{
+    font-weight: 500;
+    font-size: 18px;
+}
+.skills .skills-content .right .line{
+    height: 5px;
+    width: 100%;
+    background: lightgray;
+    position: relative;
+}
+.skills .skills-content .right .line::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: crimson;
+}
+.skills .skills-content .right .html::before{
+    width: 80%;
+}
+.skills .skills-content .right .css::before{
+    width: 60%;
+}
+.skills .skills-content .right .unix::before{
+    width: 30%;
+}
+.skills .skills-content .right .python::before{
+    width: 60%;
+} */
+
+/* my works section styling */
+
+.works .title:after{
+    content: "What i've done";
+    background: #B1B2FF;
+}
+.works .carousel .card{
+    background: #fff;
+    border-radius: 6px;
+    padding: 25px 35px;
+    margin-top: 50px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.works .carousel .card:hover{
+    background:#D2DAFF;
+}
+.works .carousel .card .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.works .carousel .card:hover .box{
+    transform: scale(1.05);
+
+}
+.works .carousel .card .box .text{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0 7px 0;
+}
+.works .carousel .card img{
+    height: 125px;
+    width: 125px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #2f4c80;
+}
+.works .carousel .card:hover img{
+    border-color: #645CAA;
+}
+.owl-dots{
+    text-align: center;
+    margin: 20px;
+}
+.owl-dot{
+    height: 10px;
+    width: 13px;
+    margin: 0 5px;
+    outline: none!important;
+    border-radius: 50%;
+    border: 2px solid #221d53!important;
+    transition: all 0.3s ease;
+}
+.owl-dot.active{
+    width: 35px;
+    border-radius: 14px;
+}
+.owl-dot.active,
+.owl-dot.active:hover{
+    background: #292456;
+}
+
+/* Contact section styling */
+
+.contact .title:after{
+    content: "Get in Touch";
+}
+.contact .contact-content .column{
+    width: calc(50% - 30px);
+}
+.contact .contact-content .left .text{
+    font-weight: 600;
+    font-size: 20px;
+    margin: 30px 0 20px 0;
+}
+.contact .contact-content .left p{
+    text-align: justify;
+    margin-bottom: 18px;
+}
+.contact .contact-content .left .icons{
+    margin: 10px 0;
+}
+.contact .contact-content .row{
+    display: flex;
+    height: 65px;
+    align-items: center;  
+}
+.contact .contact-content .row .info{
+    margin-left: 35px;
+}
+.contact .contact-content .row i{
+    color: #2f4c80;
+    font-size: 25px;
+}
+.contact .contact-content .row .info .head{
+    font-weight: 500;
+}
+.contact .right .text{
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+.contact .right form .fields{
+    display: flex;
+}
+.contact .right form .fields,
+.contact .right form .field{
+    height: 45px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.contact .right form .textarea{
+    height: 80px;
+    width: 100%;
+}
+.contact .right form .name{
+    margin-right: 10px;
+}
+.contact .right form .email{
+    margin-left: 10px;
+}
+.contact .right form .field input,
+.contact .right form .textarea textarea{
+    height: 100%;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    outline: none;
+    padding: 0 15px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+.contact .right form .textarea textarea{
+    padding-top: 10px;
+    resize: none;
+     
+}
+.contact .right form .button{
+    height: 47px;
+    width: 170px;
+    
+}
+.contact .right form .button button{
+    border-radius: 10px;
+    width: 100%;
+    height: 35px;
+    border: 2px solid #2f4c80;
+    background: #2f4c80;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.contact .right form .button button:hover{
+    color: #2f4c80;
+    background: none;
+}
+
+/* Footer Styles */
+.footer { 
+	background-color: #000; 
+	color: #fff; 
+	padding: 2rem; 
+} 
+
+.footer-list-items { 
+	display: flex; 
+	align-items: center; 
+	justify-content: center; 
+	height: 50px; 
+	width: 50px; 
+	margin: 1rem 1rem 0 1rem; 
+	border-radius: 50%; 
+	background-color: #2f4c80; 
+} 
+
+.footer-links { 
+	font-size: 24px; 
+	color: #fff; 
+	text-decoration: none; 
+} 
+
+.social-links { 
+	display: flex; 
+	align-items: center; 
+	justify-content: center; 
+} 
+
+.footer-menu { 
+	padding: 0 5rem; 
+} 
+
+.footer-menu .footer-menu-list { 
+	display: flex; 
+	list-style: none; 
+} 
+
+/* responsive media query start */
+@media (max-width: 1250px) {
+    .home .home-content .right img{
+        height: 350px;
+        width: 300px;
+        object-fit: cover;
+        border-radius: 6px;
+        margin-left: 150px;
+        
+    }
+}
+@media (max-width: 1000px) {
+    .about .about-content .left img{
+        height: 250px;
+        width: 250px;
+    }
+    
+}
+@media (max-width: 991px) {
+    .max-width{
+        padding: 0 50px;
+    }
+    .home .home-content .text-2{
+        font-size: 70px;
+        text-shadow: rgb(220, 216, 199) 1px 0 10px;
+    }
+    .home .home-content .right {
+        display: none;
+    }
+}
+@media (max-width: 800px){
+    .menu-btn{
+        display: block;
+        z-index: 999;
+    }
+    .menu-btn i.active:before{
+        content: "\f00d";
+        color: #000;
+    }
+    .navbar .menu{
+        position: fixed;
+        height:max-content;
+        width: 100%;
+        left: 100%;
+        top: 0;
+        border-color: #000;
+        border-radius: 8px;
+        background: white;
+        /* background-color:transparent; */
+        text-align: center;
+        padding-top: 50px;
+        transition: all 0.3s ease;
+    } 
+    .navbar .menu.active{
+        left: 5%;
+        
+    }
+    .navbar .menu li{
+        display: block;
+    }
+    .navbar .menu li a{
+        color: rgb(183, 27, 27);
+        display: inline-block;
+        margin: 9px 0;
+        font-size: 19px;
+    }
+    .navbar .menu li a:hover{
+        color: rgb(9, 7, 7);
+    }
+    .home .home-content .text-2{
+        font-size: 70px;
+        text-shadow: rgb(220, 216, 199) 1px 0 10px;
+    }
+    .home .home-content .text-3{
+        font-size: 35px;
+    }
+    .home .home-content a{
+        font-size: 23px;
+        padding: 10px 30px;
+    }
+    
+    .max-width{
+        max-width: 930px;
+    }
+    .about .about-content .column{
+        width: 100%;
+    }
+    .about .about-content .left{
+        display: flex;
+        justify-content: center;
+        /* margin: 0 auto 5px; */
+    }
+    .about .about-content .right{
+        flex: 100%;
+        margin-left: 10px;
+    }
+    .services .service-content .card{
+        width: calc(50%-10px);
+        margin-bottom: 20px;
+    }
+    .skills .skills-content .column,
+    .contact .contact-content .column{
+        width: 100%;
+        margin-top: 25px;
+    }
+}
+@media (max-width: 690px) {
+    .max-width{
+        padding: 0 23px;
+    }
+    .home .home-content .text-2{
+        font-size: 60px;
+    }
+    .home .home-content .text-3{
+        font-size: 32px;
+    }
+    .home .home-content a{
+        font-size: 20px;
+    }
+    .services .service-content .card{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+@media (max-width: 500px) {
+    .home .right img{
+        display:flex;
+    }
+    .home .home-content .text-2{
+        font-size: 50px;
+    }
+    .home .home-content .text-3{
+        font-size: 27px;
+    }
+    .about .about-content .right .text{
+        font-size: 19px;
+    }
+}
+  </style>
+ </head>
+ <body>
+  <div class="scroll-up-btn">
+   <i class="fa fa-angle-up">
+   </i>
+  </div>
+  <nav class="navbar">
+   <div class="max-width">
+    <div class="logo">
+     <a href="#">
+      Portfo
+      <span>
+       lio.
+      </span>
+     </a>
+    </div>
+    <ul class="menu">
+     <li>
+      <a href="#home">
+       Home
+      </a>
+     </li>
+     <li>
+      <a href="#about">
+       About
+      </a>
+     </li>
+     <li>
+      <a href="#services">
+       Skills
+      </a>
+     </li>
+     <li>
+      <a href="#skills">
+       Experience
+      </a>
+     </li>
+     <li>
+      <a href="#works">
+       My works
+      </a>
+     </li>
+     <li>
+      <a href="#contact">
+       Contact
+      </a>
+     </li>
+     <li>
+      <a href="blog1.html">
+       Blogs
+      </a>
+     </li>
+    </ul>
+    <div class="menu-btn">
+     <i class="fa fa-bars">
+     </i>
+    </div>
+   </div>
+  </nav>
+  <!-- home section start -->
+  <section class="home" id="home">
+   <div class="max-width">
+    <div class="home-content">
+     <div class="column left">
+      <div class="text-1">
+       Hello, It's me
+      </div>
+      <div class="text-2">
+       Krishna Sini Shibu
+      </div>
+      <div class="text-3">
+       Welcome To
+       <span>
+        My Portfolio
+       </span>
+      </div>
+      <!-- <a href="#">Hire me</a> -->
+     </div>
+     <div class="column right">
+      <img alt="#" src="photos/pic3.jpg"/>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- about section start -->
+  <section class="about" id="about">
+   <div class="max-width">
+    <h2 class="title">
+     About me
+    </h2>
+    <div class="about-content">
+     <div class="column left">
+      <img alt="#" src="photos/pic1.jpg"/>
+     </div>
+     <div class="column right">
+      <div class="text">
+       I'm Krishna and I'm
+       <span>
+        Head of Customer Serive and Success
+       </span>
+      </div>
+      <p>
+       With 5+ years of experience in Customer Sevice filed , 
+                            
+                        Successfully improved customer retention rates by implementing proactive customer success initiatives and personalized engagement strategies.
+                        Developed and mentored a high-performing customer service and success team, resulting in improved service delivery and customer outcomes.
+                        Streamlined customer service processes, reducing response times and enhancing efficiency without compromising service quality.
+                        Contributed to revenue growth through upselling and cross-selling opportunities driven by deep customer insights and relationship-building efforts.
+                        Received industry accolades or internal awards for outstanding customer service, leadership in customer success, or innovation in service delivery.
+                        Launched successful customer advocacy programs or customer advisory boards that fostered strong customer relationships and promoted brand loyalty.
+                        Led initiatives that resolved complex customer issues swiftly and effectively, demonstrating a commitment to customer-centric problem-solving.
+                        Spearheaded the introduction of new service offerings or enhancements based on customer feedback and market trends, contributing to business growth.
+                        Implemented initiatives that enhanced the overall customer experience journey, from onboarding to ongoing support, resulting in positive customer feedback and referrals.
+      </p>
+      <a href="Krishna_Shibu_Resume.docx">
+       Download my CV
+      </a>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- services section start -->
+  <section class="services" id="services">
+   <div class="max-width">
+    <h2 class="title">
+     Skills
+    </h2>
+    <div class="service-content">
+     <div class="card">
+      <div class="box">
+       <i class="fa fa-paint-brush">
+       </i>
+       <div class="text">
+        Customer Satisfaction Improvement
+       </div>
+       <p>
+        Implemented strategies that led to a significant increase in customer satisfaction scores, measured through feedback surveys or Net Promoter Scores.
+       </p>
+      </div>
+     </div>
+     <div class="card">
+      <div class="box">
+       <i class="fa fa-bar-chart">
+       </i>
+       <div class="text">
+        Retention Rate Enhancement
+       </div>
+       <p>
+        Successfully improved customer retention rates by implementing proactive customer success initiatives and personalized engagement strategies.
+       </p>
+      </div>
+     </div>
+     <div class="card">
+      <div class="box">
+       <i class="fa fa-code">
+       </i>
+       <div class="text">
+        Team Development
+       </div>
+       <p>
+        Developed and mentored a high-performing customer service and success team, resulting in improved service delivery and customer outcomes.
+       </p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Skills section start -->
+  <section class="skills" id="skills">
+   <div class="max-width">
+    <h2 class="title">
+     My Experiences
+    </h2>
+    <div class="skills-content">
+     <div class="column left">
+      <div class="text">
+       Experiences &amp; Education
+      </div>
+      <p>
+       Completed My Btech in Civil Engineering at MG University. I embarked on my professional journey in 2018 fill up.
+      </p>
+      <!-- <a href="#">Read more</a> -->
+     </div>
+     <div class="column right">
+      <div class="tab-titles">
+       <!--<p class="tab-links active-link" onclick="opentab('skills')">Skills</p>-->
+       <p class="tab-links" onclick="opentab('experience')">
+        Experiences
+       </p>
+       <p class="tab-links" onclick="opentab('education')">
+        Education
+       </p>
+      </div>
+      <!--<div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Data Analysis</span><br>Analysing the large datasets giving insights of same</li>
+                            <li><span>Python</span><br>To automate the daily stuff</li>
+                            <li><span>Excel</span><br>Giving dynamic dashboards of data</li>
+                        </ul>
+                    </div>-->
+      <div class="tab-contents" id="experience">
+       <ul>
+        <li>
+         <span>
+          2018-Now
+         </span>
+         <br/>
+         <b>
+          fill up
+         </b>
+        </li>
+        <!--<li><span>Python</span><br>To automate the daily stuff</li>
+                            <li><span>Excel</span><br>Giving dynamic dashboards of data</li>-->
+       </ul>
+      </div>
+      <div class="tab-contents" id="education">
+       <ul>
+        <li>
+         <span>
+          2018
+         </span>
+         <br/>
+         BTech
+        </li>
+        <!--<li><span>Excel</span><br>Giving dynamic dashboards of data</li>-->
+       </ul>
+      </div>
+     </div>
+     <!-- <div class="bars">
+                        <div class="info">
+                            <span>HTML</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="line html"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>CSS</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="line css"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>UNIX SCRIPTING</span>
+                            <span>30%</span>
+                        </div>
+                        <div class="line unix"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>PYTHON</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="line python"></div>
+                    </div> -->
+    </div>
+   </div>
+  </section>
+  <!-- my works section start -->
+  <section class="works" id="works">
+   <div class="max-width">
+    <h2 class="title">
+     My Works
+    </h2>
+    <div class="carousel owl-carousel">
+     <div class="card">
+      <div class="box">
+       <img alt="" src="photos/dataanlysis.png"/>
+       <div class="text">
+        Fill up
+       </div>
+       <p>
+        Fill up paragraph
+       </p>
+      </div>
+     </div>
+     <div class="card">
+      <div class="box">
+       <img alt="" src="photos/automation.png"/>
+       <div class="text">
+        Fill up1
+       </div>
+       <p>
+        fill up para2
+       </p>
+      </div>
+     </div>
+     <div class="card">
+      <div class="box">
+       <img alt="" src="photos/pyhton.png"/>
+       <div class="text">
+        Fill up
+       </div>
+       <p>
+        fill up para 3
+       </p>
+      </div>
+     </div>
+     <div class="card">
+      <div class="box">
+       <img alt="" src="photos/ml.png"/>
+       <div class="text">
+        fill up
+       </div>
+       <p>
+        fill up para4
+       </p>
+      </div>
+     </div>
+     <div class="card">
+      <div class="box">
+       <img alt="" src="photos/webdevelopment.png"/>
+       <div class="text">
+        fill up
+       </div>
+       <p>
+        fill up para6
+       </p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- contact section start -->
+  <section class="contact" id="contact">
+   <div class="max-width">
+    <div class="title">
+     Contact me
+    </div>
+    <div class="contact-content">
+     <div class="column left">
+      <div class="text">
+       Get in Touch
+      </div>
+      <p>
+       For additional questions or inquiries, please contact me.
+                            below are
+       <b>
+        My contact information
+       </b>
+      </p>
+      <div class="icons">
+       <div class="row">
+        <i class="fa fa-map-marker">
+        </i>
+        <div class="info">
+         <div class="head">
+          Address
+         </div>
+         <div class="sub-title">
+          Bangalore,Karnataka
+         </div>
+        </div>
+       </div>
+       <div class="row">
+        <i class="fa fa-envelope">
+        </i>
+        <div class="info">
+         <div class="head">
+          Email
+         </div>
+         <div class="sub-title">
+          krishnashibu74@gmail.com
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- <div class="column right">
+                    <div class="text">Message me</div>
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="a3076eea-301a-44e7-aed8-5126a5b7503a">
+                        <div class="fields">
+                            <div class="field name">
+                                <input type="text" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="field email">
+                                <input type="email" name="email" placeholder="Your Email" required>
+                            </div>
+                        </div> 
+                        <div class="field">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </div>                       
+                        <div class="field textarea">
+                            <textarea name="message"vcols="30" rows="10" placeholder="Your message" required></textarea>
+                        </div>
+                        <div class="button">
+                            <button id="btn" onclick="notif()">Send Message</button>
+                        </div>
+                    </form>
+                </div> -->
+    </div>
+   </div>
+  </section>
+  <!-- Footer section start -->
+  <!-- Footer section -->
+  <footer class="footer">
+   <div class="footer-content text-center">
+    <h4>
+     Copyright © 2024 All rights reserved | 
+				This portfolio website is created by EJ
+    </h4>
+    <div class="social-links">
+     <div class="footer-menu">
+      <ul class="footer-menu-list">
+       <li class="footer-list-items">
+        <a class="footer-links" href="https://www.facebook.com/">
+         <i class="fab fa-facebook-f">
+         </i>
+        </a>
+       </li>
+       <li class="footer-list-items">
+        <a class="footer-links" href="https://www.instagram.com/">
+         <i class="fab fa-instagram">
+         </i>
+        </a>
+       </li>
+       <li class="footer-list-items">
+        <a class="footer-links" href="https://www.linkedin.com/in/krishnasinishibu/">
+         <i class="fab fa-linkedin-in">
+         </i>
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <script>
+   var tablinks = document.getElementsByClassName("tab-links");
+         var tabcontents = document.getElementsByClassName("tab-contents");
+
+         function opentab(tabname){
+        
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        };
+  </script>
+  <script>
+   $(document).ready(function(){
+    $(window).scroll(function(){
+        if(this.scrollY >20){
+            $('.navbar').addClass("sticky");
+        }else{
+            $('.navbar').removeClass("sticky");
+        }
+        if(this.scrollY >500){
+            $('.scroll-up-btn').addClass("show");
+        }else{
+            $('.scroll-up-btn').removeClass("show");
+        }
+    });
+
+    // slide funtion script
+    $('.scroll-up-btn').click(function(){
+        $('html').animate({scrollTop: 0});
+    });
+
+
+    // toggle menu/navbar script
+    $('.menu-btn').click(function(){
+        $('.navbar .menu').toggleClass("active");
+        $('.menu-btn i').toggleClass("active");
+    });
+
+    // skills section script
+
+    
+    // owl carousel script
+
+    $('.owl-carousel').owlCarousel({
+        margin:20,
+        loop: true,
+        autoplayTimeOut: 2000,
+        autoplayHovePause: true,
+        responsive: {
+            0:{
+                items: 1,
+                nav: false
+            },
+            600:{
+                items: 2,
+                nav: false
+            },
+            1000:{
+                items: 3,
+                nav: false
+            }
+        }
+    });
+    
+    $('#btn').click(function () {
+        // Your existing code to handle the form submission goes here
+
+        // Add a delay before clearing the fields
+        setTimeout(function () {
+            $('.field input, .field textarea').val('');
+        }, 2000);
+
+        // Add the notif function
+        notif();
+    });
+});
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function notif() {
+    let btn = document.getElementById("btn")
+    await sleep(2000)
+    btn.textContent = "Sent Successfully"
+    await sleep(3000)
+    btn.textContent = "Send Message"
+}
+  </script>
+ </body>
+</html>
