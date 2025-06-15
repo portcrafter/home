@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Eldhose | AI-Embedded Engineer</title>
+    
+    <!-- Enhanced Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16/lib/typed.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #111111;
+            --accent-primary: #00ff88;
+            --accent-secondary: #0099ff;
+            --accent-tertiary: #ff0099;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(ellipse at top, #1a1a2e, #0a0a0a);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 153, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 0, 153, 0.1) 0%, transparent 50%);
+            animation: bgShift 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgShift {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-20px, -20px) rotate(2deg); }
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease;
+            opacity: 0.5;
+        }
+
+        /* Advanced Glass Morphism */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 80%;
+            transform: translateX(-50%);
+            padding: 15px 30px;
+            border-radius: 50px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+            text-shadow: 0 0 10px var(--accent-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Logo Animation */
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            0% { filter: drop-shadow(0 0 5px var(--accent-primary)); }
+            100% { filter: drop-shadow(0 0 20px var(--accent-primary)); }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            animation: titlePulse 3s ease-in-out infinite;
+        }
+
+        .hero-logo {
+            height: 200px;         /* ↓ Reduce this value as needed */
+            margin: 20px auto;
+            display: block;
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin-bottom: 30px;
+            opacity: 0.9;
+            min-height: 60px;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-bg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px var(--accent-primary), 0 0 40px var(--accent-primary);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+
+
+        /* Floating Avatar */
+
+        .avatar-container {
+            height: 20px; /* Same as avatar height */
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .floating-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            padding: 4px;
+            margin-bottom: 30px;
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-avatar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: avatarShine 3s linear infinite;
+        }
+
+        @keyframes avatarShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .floating-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .skill-card {
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .skill-card:hover::after {
+            transform: translateX(0);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .skill-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .project-card:hover::after {
+            opacity: 0.05;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--accent-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent-primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .tech-tag:hover {
+            transform: scale(1.1);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            color: var(--accent-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent-primary);
+            transform: translateX(5px);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 1001;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 20px;
+                width: 90%;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 12vw, 6rem);
+            }
+        }
+
+        /* Particles effect with CSS */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            animation: particleFloat 15s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scroll-indicator"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <ul class="nav-links">
+            <!-- <li><div class="logo">{'Jay'}</div></li> -->
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="avatar-container"></div>
+            <div class="floating-avatar">
+                <img src="photos/avatar1.jpg" alt="Eldhose's Avatar">
+            </div>
+        </div>
+    
+        <!-- Replace name with logo image -->
+        <img src="photos/logo1.png" alt="eldcoded logo" class="hero-logo" />
+    
+        <div class="hero-subtitle">
+            <span id="typed-text"></span>
+        </div>
+        <p class="hero-description">
+            Crafting the future where AI meets hardware. I build intelligent embedded systems that think, learn, and adapt to make tomorrow's technology today's reality.
+        </p>
+        <a href="#projects" class="cta-button">Explore My Universe</a>
+    </section>
+    
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <div class="glass-card" style="padding: 50px; text-align: center;">
+            <p style="font-size: 1.3rem; line-height: 1.8; color: var(--text-secondary);">
+                I'm a visionary engineer who lives at the intersection of artificial intelligence and embedded systems. 
+                My passion lies in creating intelligent hardware solutions that bridge the gap between the physical and digital worlds. 
+                From Raspberry Pi-powered AI assistants to next-generation development tools, I transform complex problems into elegant, innovative solutions.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title">Tech Arsenal</h2>
+        <div class="skills-grid">
+            <div class="skill-card glass-card">
+                <div class="skill-icon">
+                    <i class="ri-brain-line"></i>
+                </div>
+                <h3 class="skill-title">AI & Machine Learning</h3>
+                <p class="skill-description">Building intelligent systems with TensorFlow, PyTorch, and cutting-edge neural networks that learn and adapt.</p>
+            </div>
+            <div class="skill-card glass-card">
+                <div class="skill-icon">
+                    <i class="ri-cpu-line"></i>
+                </div>
+                <h3 class="skill-title">Embedded Systems</h3>
+                <p class="skill-description">Crafting IoT solutions with Raspberry Pi, Arduino, and microcontrollers that bring intelligence to the edge.</p>
+            </div>
+            <div class="skill-card glass-card">
+                <div class="skill-icon">
+                    <i class="ri-code-line"></i>
+                </div>
+                <h3 class="skill-title">Full-Stack Development</h3>
+                <p class="skill-description">Creating seamless experiences with Python, JavaScript, React, and modern web technologies.</p>
+            </div>
+            <div class="skill-card glass-card">
+                <div class="skill-icon">
+                    <i class="ri-cloud-line"></i>
+                </div>
+                <h3 class="skill-title">Cloud & DevOps</h3>
+                <p class="skill-description">Deploying scalable solutions with AWS, Docker, and CI/CD pipelines that power global applications.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card glass-card">
+                <h3 class="project-title">🤖 Neural Pi Assistant</h3>
+                <p class="project-description">
+                    An advanced AI-powered voice assistant built on Raspberry Pi that combines real-time speech processing, 
+                    computer vision, and IoT control. Features include natural language understanding, smart home integration, 
+                    and adaptive learning capabilities.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">OpenAI API</span>
+                    <span class="tech-tag">Raspberry Pi</span>
+                    <span class="tech-tag">TensorFlow</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">View Project →</a>
+                    <a href="#" class="project-link">GitHub →</a>
+                </div>
+            </div>
+            <div class="project-card glass-card">
+                <h3 class="project-title">⚡ LLM DevTools Pro</h3>
+                <p class="project-description">
+                    Next-generation VS Code extension that revolutionizes coding with GPT-4 integration. Features intelligent 
+                    code generation, real-time debugging assistance, automated documentation, and context-aware suggestions 
+                    that understand your entire codebase.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">VS Code API</span>
+                    <span class="tech-tag">GPT-4</span>
+                    <span class="tech-tag">Node.js</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">View Project →</a>
+                    <a href="#" class="project-link">GitHub →</a>
+                </div>
+            </div>
+            <div class="project-card glass-card">
+                <h3 class="project-title">🌐 Smart IoT Mesh Network</h3>
+                <p class="project-description">
+                    Distributed IoT ecosystem using edge computing and mesh networking. Self-healing network of sensors 
+                    and actuators with AI-driven anomaly detection, predictive maintenance, and autonomous decision-making 
+                    capabilities for smart city applications.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">C++</span>
+                    <span class="tech-tag">ESP32</span>
+                    <span class="tech-tag">MQTT</span>
+                    <span class="tech-tag">Edge AI</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">View Project →</a>
+                    <a href="#" class="project-link">GitHub →</a>
+                </div>
+            </div>
+            <div class="project-card glass-card">
+                <h3 class="project-title">🔮 Quantum ML Simulator</h3>
+                <p class="project-description">
+                    Quantum machine learning simulation platform that explores quantum algorithms for classical ML problems. 
+                    Features quantum neural networks, variational quantum eigensolvers, and hybrid classical-quantum 
+                    optimization techniques for next-gen computing research.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Qiskit</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">Jupyter</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">View Project →</a>
+                    <a href="#" class="project-link">GitHub →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Let's Build the Future</h2>
+        <div class="contact-form glass">
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="a3076eea-301a-44e7-aed8-5126a5b7503a">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-input" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="6" class="form-input" placeholder="Let's discuss your next innovative project..." required></textarea>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Launch Collaboration →</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 40px; color: var(--text-secondary);">
+        <p>&copy; 2025 Eldhose. Engineered with 🧠, ⚡ & 💚</p>
+    </footer>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize GSAP plugins
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Custom Cursor functionality
+            const cursor = document.getElementById('cursor');
+            const cursorFollower = document.getElementById('cursor-follower');
+
+            if (cursor && cursorFollower) {
+                document.addEventListener('mousemove', (e) => {
+                    gsap.to(cursor, {
+                        x: e.clientX,
+                        y: e.clientY,
+                        duration: 0.1
+                    });
+                    gsap.to(cursorFollower, {
+                        x: e.clientX,
+                        y: e.clientY,
+                        duration: 0.3
+                    });
+                });
+
+                // Hover effects for cursor
+                document.querySelectorAll('a, button, .glass-card').forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        gsap.to(cursor, { scale: 2, duration: 0.3 });
+                        gsap.to(cursorFollower, { scale: 1.5, duration: 0.3 });
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        gsap.to(cursor, { scale: 1, duration: 0.3 });
+                        gsap.to(cursorFollower, { scale: 1, duration: 0.3 });
+                    });
+                });
+            }
+
+            // Typed.js for hero subtitle
+            const typedTextElement = document.getElementById('typed-text');
+            if (typedTextElement && typeof Typed !== 'undefined') {
+                new Typed('#typed-text', {
+                    strings: [
+                        'AI-Embedded Engineer 🤖',
+                        'Hardware Innovator ⚡',
+                        'IoT Architect 🌐',
+                        'Machine Learning Expert 🧠',
+                        'Future Builder 🚀'
+                    ], 
+                    typeSpeed: 80,
+                    backSpeed: 50,
+                    backDelay: 2000,}
+                )
+            }
+        } )

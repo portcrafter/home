@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Krishna Sini Shibu | Customer Success Leader</title>
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" referrerpolicy="no-referrer" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #3b82f6;
+      --secondary: #1e40af;
+      --accent: #f59e0b;
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --light: #f8fafc;
+      --border: #e5e7eb;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 0;
+      font-family: 'Montserrat', sans-serif;
+      transition: var(--transition);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+    
+    .navbar.sticky {
+      padding: 0.8rem 0;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .max-width {
+      max-width: 1300px;
+      padding: 0 80px;
+      margin: auto;
+    }
+
+    .navbar .max-width {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar .logo a {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar .logo a span {
+      color: var(--text);
+      transition: var(--transition);
+    }
+    
+    .navbar.sticky .logo a span {
+      color: var(--primary);
+    }
+
+    .navbar .menu li {
+      list-style: none;
+      display: inline-block;
+    }
+    
+    .navbar .menu li a {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-left: 2rem;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    
+    .navbar .menu li a:hover {
+      color: var(--primary);
+    }
+    
+    .navbar .menu li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+    
+    .navbar .menu li a:hover::after {
+      width: 100%;
+    }
+
+    .menu-btn {
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+    }
+
+    .scroll-up-btn {
+      position: fixed;
+      height: 45px;
+      width: 42px;
+      background: var(--primary);
+      right: 30px;
+      bottom: 30px;
+      text-align: center;
+      line-height: 45px;
+      color: white;
+      z-index: 9999;
+      font-size: 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+    
+    .scroll-up-btn.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .scroll-up-btn:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    /* Home Section */
+    .home {
+      display: flex;
+      background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+      height: 100vh;
+      min-height: 700px;
+      color: var(--text);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .home::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0) 70%);
+      z-index: 1;
+    }
+
+    .home .max-width {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+
+    .home .home-content {
+      display: flex;
+      width: 100%;
+    }
+    
+    .home .home-content .left {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .home .home-content .right {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .home .home-content .text-1 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .home .home-content .text-2 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      line-height: 1.2;
+      color: var(--text);
+    }
+    
+    .home .home-content .text-3 {
+      font-size: 2rem;
+      margin: 0.5rem 0;
+      color: var(--text-light);
+    }
+    
+    .home .home-content .text-3 span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .home .right img {
+      height: 500px;
+      width: 500px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 15px solid white;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      transition: var(--transition);
+    }
+    
+    .home .right img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 0;
+      position: relative;
+    }
+    
+    .section-title {
+      position: relative;
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .section-title::before {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .section-title::after {
+      content: attr(data-subtitle);
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      color: var(--primary);
+      padding: 0 1rem;
+      background: white;
+    }
+
+    /* About Section */
+    .about {
+      background: white;
+    }
+    
+    .about .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .about .about-content .left {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .about .about-content .right {
+      width: 55%;
+    }
+    
+    .about .about-content .left img {
+      height: 350px;
+      width: 350px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .about .about-content .left img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .about .about-content .right .text {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    
+    .about .about-content .right .text span {
+      color: var(--primary);
+    }
+    
+    .about .about-content .right p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+    
+    .about .about-content .right a {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      font-size: 1rem;
+      padding: 0.8rem 2rem;
+      margin-top: 1rem;
+      border-radius: 50px;
+      border: 2px solid var(--primary);
+      transition: var(--transition);
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+    
+    .about .about-content .right a:hover {
+      background: transparent;
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    /* Skills Section */
+    .services {
+      background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+    }
+    
+    .services .service-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .services .service-content .card {
+      width: calc(33% - 20px);
+      background: white;
+      text-align: center;
+      border-radius: 15px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(37, 99, 235, 0.1);
+    }
+    
+    .services .service-content .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15);
+    }
+    
+    .services .service-content .card .box {
+      transition: var(--transition);
+    }
+    
+    .services .service-content .card:hover .box {
+      transform: scale(1.05);
+    }
+    
+    .services .service-content .card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .services .service-content .card .text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      color: var(--text);
+    }
+    
+    .services .service-content .card p {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Experience Section */
+    .skills {
+      background: white;
+    }
+    
+    .skills .skills-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    
+    .skills .skills-content .column {
+      width: calc(50% - 20px);
+    }
+    
+    .skills .skills-content .left .text {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    
+    .skills .skills-content .left p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+    
+    .skills .skills-content .right .tab-titles {
+      display: flex;
+      margin: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .skills .skills-content .right .tab-links {
+      margin-right: 2rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .tab-links.active-link {
+      color: var(--primary);
+    }
+    
+    .tab-links.active-link::after {
+      content: "";
+      width: 50%;
+      height: 3px;
+      background: var(--primary);
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      border-radius: 3px;
+    }
+    
+    .tab-contents ul li {
+      list-style: none;
+      margin: 1rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .tab-contents ul li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+    
+    .tab-contents ul li span {
+      color: var(--primary);
+      font-weight: 500;
+    }
+    
+    .tab-contents {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .tab-contents.active-tab {
+      display: block;
+    }
+
+    /* Works Section */
+    .works {
+      background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+    }
+    
+    .works .carousel {
+      position: relative;
+    }
+    
+    .works .carousel .card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(37, 99, 235, 0.1);
+    }
+    
+    .works .carousel .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15);
+    }
+    
+    .works .carousel .card .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    
+    .works .carousel .card:hover .box {
+      transform: scale(1.03);
+    }
+    
+    .works .carousel .card img {
+      height: 150px;
+      width: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.5rem;
+    }
+    
+    .works .carousel .card .text {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      color: var(--text);
+    }
+    
+    .works .carousel .card p {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    .owl-dots {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .owl-dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      outline: none !important;
+      border-radius: 50%;
+      border: 2px solid var(--primary) !important;
+      transition: var(--transition);
+    }
+    
+    .owl-dot.active {
+      background: var(--primary) !important;
+      transform: scale(1.2);
+    }
+
+    /* Contact Section */
+    .contact {
+      background: white;
+    }
+    
+    .contact .contact-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .contact .contact-content .column {
+      width: calc(50% - 20px);
+    }
+    
+    .contact .contact-content .left .text {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 2rem 0 1.5rem;
+      color: var(--text);
+    }
+    
+    .contact .contact-content .left p {
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      text-align: justify;
+    }
+    
+    .contact .contact-content .left .icons {
+      margin: 1rem 0;
+    }
+    
+    .contact .contact-content .row {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0;
+    }
+    
+    .contact .contact-content .row i {
+      font-size: 1.8rem;
+      color: var(--primary);
+      min-width: 50px;
+    }
+    
+    .contact .contact-content .row .info {
+      margin-left: 1.5rem;
+    }
+    
+    .contact .contact-content .row .info .head {
+      font-weight: 500;
+      color: var(--text);
+    }
+    
+    .contact .contact-content .row .info .sub-title {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    
+    .contact .right form .fields {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact .right form .field,
+    .contact .right form .textarea {
+      height: 50px;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .contact .right form .textarea {
+      height: 120px;
+    }
+    
+    .contact .right form .name {
+      margin-right: 10px;
+    }
+    
+    .contact .right form .email {
+      margin-left: 10px;
+    }
+    
+    .contact .right form .field input,
+    .contact .right form .textarea textarea {
+      height: 100%;
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+      padding: 0 1rem;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      transition: var(--transition);
+    }
+    
+    .contact .right form .field input:focus,
+    .contact .right form .textarea textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+    
+    .contact .right form .textarea textarea {
+      padding: 1rem;
+      resize: none;
+    }
+    
+    .contact .right form .button {
+      height: 50px;
+      width: 180px;
+    }
+    
+    .contact .right form .button button {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 8px;
+      background: var(--primary);
+      color: white;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+    
+    .contact .right form .button button:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    /* Footer Section */
+    .footer {
+      background: var(--text);
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 80px;
+    }
+    
+    .footer-content h4 {
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.5rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-menu-list {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+    }
+    
+    .footer-list-items {
+      margin: 0 1rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 45px;
+      width: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    
+    .footer-links:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .max-width {
+        padding: 0 50px;
+      }
+      
+      .home .right img {
+        height: 400px;
+        width: 400px;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .home .home-content .text-2 {
+        font-size: 3rem;
+      }
+      
+      .home .home-content .text-3 {
+        font-size: 1.8rem;
+      }
+      
+      .about .about-content .left img {
+        height: 300px;
+        width: 300px;
+      }
+      
+      .services .service-content .card {
+        width: calc(50% - 15px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
+      }
+      
+      .navbar .menu {
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        background: white;
+        text-align: center;
+        padding-top: 80px;
+        transition: all 0.3s ease;
+      }
+      
+      .navbar .menu.active {
+        left: 0;
+      }
+      
+      .navbar .menu li {
+        display: block;
+        margin: 1.5rem 0;
+      }
+      
+      .navbar .menu li a {
+        font-size: 1.2rem;
+        margin-left: 0;
+      }
+      
+      .home .home-content,
+      .about .about-content,
+      .contact .contact-content {
+        flex-direction: column;
+      }
+      
+      .home .home-content .left,
+      .home .home-content .right,
+      .about .about-content .left,
+      .about .about-content .right,
+      .contact .contact-content .column {
+        width: 100%;
+      }
+      
+      .home .home-content .right {
+        margin-top: 3rem;
+      }
+      
+      .about .about-content .left {
+        margin-bottom: 3rem;
+      }
+      
+      .services .service-content .card {
+        width: 100%;
+      }
+      
+      .skills .skills-content .column {
+        width: 100%;
+      }
+      
+      .skills .skills-content .right {
+        margin-top: 3rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .max-width {
+        padding: 0 30px;
+      }
+      
+      .home .home-content .text-1 {
+        font-size: 1.2rem;
+      }
+      
+      .home .home-content .text-2 {
+        font-size: 2.5rem;
+      }
+      
+      .home .home-content .text-3 {
+        font-size: 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .about .about-content .left img {
+        height: 250px;
+        width: 250px;
+      }
+      
+      .contact .right form .fields {
+        flex-direction: column;
+      }
+      
+      .contact .right form .name,
+      .contact .right form .email {
+        margin: 0 0 1.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Up Button -->
+  <div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="max-width">
+      <div class="logo">
+        <a href="#">Krishna<span>Shibu</span></a>
+      </div>
+      <ul class="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Skills</a></li>
+        <li><a href="#skills">Experience</a></li>
+        <li><a href="#works">My Works</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section class="home" id="home">
+    <div class="max-width">
+      <div class="home-content">
+        <div class="left">
+          <div class="text-1">Hello, It's me</div>
+          <div class="text-2">Krishna Sini Shibu</div>
+          <div class="text-3">Welcome To <span>My Portfolio</span></div>
+        </div>
+        <div class="right">
+          <img src="https://via.placeholder.com/500x500" alt="Profile Image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="max-width">
+      <h2 class="section-title" data-subtitle="who i am">About me</h2>
+      <div class="about-content">
+        <div class="left">
+          <img src="https://via.placeholder.com/350x350" alt="About Image">
+        </div>
+        <div class="right">
+          <div class="text">I'm Krishna and I'm <span>Head of Customer Service and Success</span></div>
+          <p>
+            With 5+ years of experience in Customer Service field, I've successfully improved customer retention rates by implementing proactive customer success initiatives and personalized engagement strategies. I've developed and mentored high-performing teams, streamlined service processes, and contributed to revenue growth through deep customer insights.
+          </p>
+          <p>
+            My expertise includes launching customer advocacy programs, resolving complex customer issues, and enhancing the overall customer experience journey from onboarding to ongoing support.
+          </p>
+          <a href="#">Download my CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="services" id="services">
+    <div class="max-width">
+      <h2 class="section-title" data-subtitle="what i know">Skills</h2>
+      <div class="service-content">
+        <div class="card">
+          <div class="box">
+            <i class="fas fa-smile"></i>
+            <div class="text">Customer Satisfaction</div>
+            <p>Implemented strategies that led to significant increases in customer satisfaction scores and Net Promoter Scores.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="box">
+            <i class="fas fa-chart-line"></i>
+            <div class="text">Retention Rate</div>
+            <p>Improved customer retention rates through proactive initiatives and personalized engagement strategies.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="box">
+            <i class="fas fa-users"></i>
+            <div class="text">Team Development</div>
+            <p>Developed and mentored high-performing customer service teams resulting in improved outcomes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="skills" id="skills">
+    <div class="max-width">
+      <h2 class="section-title" data-subtitle="my journey">Experience</h2>
+      <div class="skills-content">
+        <div class="left">
+          <div class="text">Experience & Education</div>
+          <p>
+            Completed My B.Tech in Civil Engineering at MG University. I embarked on my professional journey in 2018 and have since specialized in customer service and success leadership roles.
+          </p>
+        </div>
+        <div class="right">
+          <div class="tab-titles">
+            <p class="tab-links active-link" onclick="opentab('experience')">Experience</p>
+            <p class="tab-links" onclick="opentab('education')">Education</p>
+          </div>
+          <div class="tab-contents active-tab" id="experience">
+            <ul>
+              <li><span>2018-Present</span><br><b>Head of Customer Service and Success</b> at Current Company</li>
+              <li><span>2016-2018</span><br><b>Customer Success Manager</b> at Previous Company</li>
+              <li><span>2014-2016</span><br><b>Customer Support Lead</b> at Early Career Company</li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="education">
+            <ul>
+              <li><span>2014</span><br>B.Tech in Civil Engineering from MG University</li>
+              <li><span>2010</span><br>Higher Secondary Education</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Works Section -->
+  <section class="works" id="works">
+    <div class="max-width">
+      <h2 class="section-title" data-subtitle="my achievements">My Works</h2>
+      <div class="carousel owl-carousel">
+        <div class="card">
+          <div class="box">
+            <img src="https://via.placeholder.com/150x150" alt="Work 1">
+            <div class="text">Customer Retention Program</div>
+            <p>Developed a program that increased customer retention by 35% through personalized engagement strategies.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="box">
+            <img src="https://via.placeholder.com/150x150" alt="Work 2">
+            <div class="text">Service Process Optimization</div>
+            <p>Streamlined customer service processes reducing response times by 40% while maintaining quality.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="box">
+            <img src="https://via.placeholder.com/150x150" alt="Work 3">
+            <div class="text">Team Development</div>
+            <p>Built and mentored a high-performing customer success team recognized for exceptional service delivery.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="max-width">
+      <h2 class="section-title" data-subtitle="get in touch">Contact me</h2>
+      <div class="contact-content">
+        <div class="left">
+          <div class="text">Get in Touch</div>
+          <p>For additional questions or inquiries, please contact me. Below are my contact details.</p>
+          <div class="icons">
+            <div class="row">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="info">
+                <div class="head">Address</div>
+                <div class="sub-title">Bangalore, Karnataka</div>
+              </div>
+            </div>
+            <div class="row">
+              <i class="fas fa-envelope"></i>
+              <div class="info">
+                <div class="head">Email</div>
+                <div class="sub-title">krishnashibu74@gmail.com</div>
+              </div>
+            </div>
+            <div class="row">
+              <i class="fas fa-phone-alt"></i>
+              <div class="info">
+                <div class="head">Phone</div>
+                <div class="sub-title">+91 9876543210</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <form action="#">
+            <div class="fields">
+              <div class="field name">
+                <input type="text" placeholder="Your Name" required>
+              </div>
+              <div class="field email">
+                <input type="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="field">
+              <input type="text" placeholder="Subject" required>
+            </div>
+            <div class="textarea">
+              <textarea cols="30" rows="10" placeholder="Your Message" required></textarea>
+            </div>
+            <div class="button">
+              <button type="submit">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-content">
+      <h4>Copyright © 2024 All rights reserved | This portfolio website is created with ❤️</h4>
+      <div class="social-links">
+        <ul class="footer-menu-list">
+          <li class="footer-list-items">
+            <a href="https://www.facebook.com/" class="footer-links"><i class="fab fa-facebook-f"></i></a>
+          </li>
+          <li class="footer-list-items">
+            <a href="https://www.instagram.com/" class="footer-links"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li class="footer-list-items">
+            <a href="https://www.linkedin.com/in/krishnasinishibu/" class="footer-links"><i class="fab fa-linkedin-in"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tab Switching
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname) {
+      for(tablink of tablinks) {
+        tablink.classList.remove("active-link");
+      }
+      for(tabcontent of tabcontents) {
+        tabcontent.classList.remove("active-tab");
+      }
+      event.currentTarget.classList.add("active-link");
+      document.getElementById(tabname).classList.add("active-tab");
+    }
+
+    // Sticky Navbar
+    $(document).ready(function(){
+      $(window).scroll(function(){
+        if(this.scrollY > 20){
+          $('.navbar').addClass("sticky");
+        }else{
+          $('.navbar').removeClass("sticky");
+        }
+        
+        if(this.scrollY > 500){
+          $('.scroll-up-btn').addClass("show");
+        }else{
+          $('.scroll-up-btn').removeClass("show");
+        }
+      });
+
+      // Slide-up script
+      $('.scroll-up-btn').click(function(){
+        $('html').animate({scrollTop: 0});
+      });
+
+      // Toggle menu/navbar script
+      $('.menu-btn').click(function(){
+        $('.navbar .menu').toggleClass("active");
+        $('.menu-btn i').toggleClass("active");
+      });
+
+      // Owl Carousel script
+      $('.owl-carousel').owlCarousel({
+        margin: 20,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        responsive: {
+          0:{
+            items: 1,
+            nav: false
+          },
+          600:{
+            items: 2,
+            nav: false
+          },
+          1000:{
+            items: 3,
+            nav: false
+          }
+        }
+      });
+
+      // Form submission
+      $('#btn').click(function () {
+        setTimeout(function () {
+          $('.field input, .field textarea').val('');
+        }, 2000);
+        notif();
+      });
+    });
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function notif() {
+      let btn = document.getElementById("btn")
+      await sleep(2000)
+      btn.textContent = "Sent Successfully"
+      await sleep(3000)
+      btn.textContent = "Send Message"
+    }
+  </script>
+</body>
+</html>

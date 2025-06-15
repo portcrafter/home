@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional portfolio of Alex Rodriguez - Full-Stack Developer and DevOps Engineer">
+  <meta property="og:title" content="Terminal Elite Portfolio">
+  <title>$ ./portfolio.sh - Elite Developer Terminal</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0a0a;
+      color: #00ff88;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #00ff88;
+      color: #0a0a0a;
+      padding: 8px;
+      z-index: 100;
+      transition: top 0.3s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Matrix-style background animation */
+    .matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.1;
+    }
+
+    .matrix-column {
+      position: absolute;
+      font-size: 12px;
+      animation: matrix-fall linear infinite;
+      color: #00ff88;
+    }
+
+    @keyframes matrix-fall {
+      0% { transform: translateY(-100vh); }
+      100% { transform: translateY(100vh); }
+    }
+
+    /* Terminal window */
+    .terminal-container {
+      max-width: 1200px;
+      margin: 20px auto;
+      background: #111111;
+      border-radius: 10px;
+      box-shadow: 0 0 50px rgba(0, 255, 136, 0.3);
+      overflow: hidden;
+      border: 2px solid #00ff88;
+    }
+
+    /* Terminal header */
+    .terminal-header {
+      background: #1a1a1a;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #00ff88;
+      position: relative;
+    }
+
+    .terminal-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .terminal-btn {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+    }
+
+    .btn-close { background: #ff5f57; }
+    .btn-minimize { background: #ffbd2e; }
+    .btn-maximize { background: #28ca42; }
+
+    .terminal-title {
+      margin-left: 15px;
+      font-size: 0.9rem;
+      color: #00ff88;
+    }
+
+    .back-to-landing {
+      color: #00ff88;
+      text-decoration: none;
+      margin-left: auto;
+      padding: 5px 10px;
+      border: 1px solid #00ff88;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .back-to-landing:hover {
+      background: rgba(0, 255, 136, 0.1);
+    }
+
+    /* Main terminal content */
+    .terminal-content {
+      padding: 20px;
+      min-height: 80vh;
+    }
+
+    /* Header section */
+    .header {
+      text-align: center;
+      padding: 2rem 0;
+      position: relative;
+    }
+
+    .ascii-art {
+      font-size: 0.8rem;
+      color: #00ff88;
+      margin-bottom: 1rem;
+      white-space: pre;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ff88; }
+      to { text-shadow: 0 0 20px #00ff88, 0 0 30px #00ff88; }
+    }
+
+    .prompt {
+      color: #00ff88;
+      margin: 1rem 0;
+    }
+
+    .cursor {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    .typewriter {
+      overflow: hidden;
+      border-right: 2px solid #00ff88;
+      white-space: nowrap;
+      animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+      display: inline-block;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #00ff88; }
+    }
+
+    /* Navigation */
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      color: #00ff88;
+      text-decoration: none;
+      padding: 8px 15px;
+      border: 1px solid #00ff88;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .nav-item:hover::before {
+      left: 100%;
+    }
+
+    .nav-item:hover {
+      background: rgba(0, 255, 136, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+    }
+
+    /* Sections */
+    .section {
+      margin: 3rem 0;
+      padding: 2rem;
+      border: 1px dashed #00ff88;
+      border-radius: 10px;
+      background: rgba(0, 255, 136, 0.02);
+      position: relative;
+    }
+
+    .section::before {
+      content: attr(data-title);
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: #0a0a0a;
+      padding: 0 10px;
+      color: #00ff88;
+      font-weight: bold;
+    }
+
+    .section h2 {
+      color: #00ff88;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .command-prompt {
+      color: #ff6b6b;
+      font-weight: bold;
+    }
+
+    /* Skills grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .skill-item {
+      background: #1a1a1a;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #333;
+      transition: all 0.3s ease;
+    }
+
+    .skill-item:hover {
+      border-color: #00ff88;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+    }
+
+    .skill-name {
+      color: #00ff88;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .skill-bar {
+      background: #333;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 5px;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #00ff88, #00cc66);
+      border-radius: 4px;
+      animation: loadSkill 2s ease-in-out;
+    }
+
+    @keyframes loadSkill {
+      from { width: 0; }
+    }
+
+    /* Projects */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .project {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #00ff88, #00cc66, #ff6b6b, #4ecdc4);
+      animation: rainbow 3s linear infinite;
+    }
+
+    @keyframes rainbow {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .project:hover {
+      border-color: #00ff88;
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
+    }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .project-icon {
+      font-size: 1.5rem;
+    }
+
+    .project-title {
+      color: #00ff88;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 1rem 0;
+    }
+
+    .tech-tag {
+      background: rgba(0, 255, 136, 0.2);
+      color: #00ff88;
+      padding: 4px 8px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      border: 1px solid #00ff88;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .project-link {
+      color: #ff6b6b;
+      text-decoration: none;
+      padding: 5px 10px;
+      border: 1px solid #ff6b6b;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .project-link:hover {
+      background: rgba(255, 107, 107, 0.1);
+      transform: scale(1.05);
+    }
+
+    /* Experience timeline */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: #00ff88;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: #1a1a1a;
+      border-radius: 8px;
+      border: 1px solid #333;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -23px;
+      top: 20px;
+      width: 12px;
+      height: 12px;
+      background: #00ff88;
+      border-radius: 50%;
+      border: 3px solid #0a0a0a;
+    }
+
+    .timeline-date {
+      color: #ff6b6b;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .timeline-title {
+      color: #00ff88;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+
+    .timeline-company {
+      color: #4ecdc4;
+      font-weight: 500;
+    }
+
+    /* Contact form */
+    .contact-form {
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 10px;
+      border: 1px solid #333;
+      margin: 2rem 0;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      color: #00ff88;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      background: #0a0a0a;
+      border: 1px solid #333;
+      border-radius: 5px;
+      padding: 10px;
+      color: #00ff88;
+      font-family: 'JetBrains Mono', monospace;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #00ff88;
+      box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+    }
+
+    .form-button {
+      background: linear-gradient(45deg, #00ff88, #00cc66);
+      color: #0a0a0a;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+    }
+
+    /* Social links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      color: #00ff88;
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 1px solid #00ff88;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .social-link:hover {
+      background: rgba(0, 255, 136, 0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: #666;
+      border-top: 1px dashed #333;
+      margin-top: 3rem;
+    }
+
+    .footer-command {
+      color: #00ff88;
+      margin-bottom: 1rem;
+    }
+
+    /* Reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .skill-progress, .matrix-column, .project::before,
+      .typewriter, .cursor, .nav-item::before {
+        animation: none !important;
+      }
+      .typewriter {
+        border-right: none;
+        white-space: normal;
+      }
+      .project:hover, .skill-item:hover, .nav-item:hover,
+      .social-link:hover, .form-button:hover {
+        transform: none !important;
+      }
+    }
+
+    /* Particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .terminal-container {
+        margin: 10px;
+        border-radius: 0;
+      }
+      
+      .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .skills-grid, .project-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .terminal-header {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+      }
+
+      .terminal-title {
+        order: 3;
+        width: 100%;
+        text-align: center;
+        margin: 5px 0 0 0;
+      }
+
+      .back-to-landing {
+        margin-left: auto;
+        margin-right: auto;
+        order: 2;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-btn">
+    <i class="fas fa-arrow-left"></i> Back to PortCrafter
+  </a>
+  
+  <div class="particles" id="particles"></div>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Matrix background -->
+  <div class="matrix-bg" id="matrix"></div>
+
+  <div class="terminal-container">
+    <!-- Terminal header -->
+    <div class="terminal-header">
+      <div class="terminal-buttons">
+        <div class="terminal-btn btn-close" onclick="goBack()" title="Go Back"></div>
+        <div class="terminal-btn btn-minimize"></div>
+        <div class="terminal-btn btn-maximize"></div>
+      </div>
+      <div class="terminal-title">elite-dev@terminal: ~/portfolio</div>
+    </div>
+
+    <script>
+      function goBack() {
+        // Same behavior as demo1
+        window.location.href = 'index.html';
+      }
+    </script>
+
+    <!-- Main terminal content -->
+    <div class="terminal-content" id="main-content">
+      <!-- Header -->
+      <div class="header">
+        <div class="ascii-art" aria-hidden="true">
+  ╔═══════════════════════════════════════╗
+  ║     _____ _     _ _       ____        ║
+  ║    | ____| |   (_) |_ ___|  _ \  _____║
+  ║    |  _| | |   | | __/ _ \ | | |/ _ \ \║
+  ║    | |___| |___| | ||  __/ |_| |  __/\_║
+  ║    |_____|_____|_|\__\___|____/ \___(_)║
+  ║                                       ║
+  ╚═══════════════════════════════════════╝
+        </div>
+        
+        <div class="prompt">
+          <span class="command-prompt">root@portfolio:~$</span> 
+          <span class="typewriter">./initialize_portfolio.sh</span>
+        </div>
+        
+        <div class="loading-text">
+          [INFO] Loading elite developer profile...
+          <span class="cursor">█</span>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav-menu" aria-label="Main navigation">
+          <a href="#about" class="nav-item">./about.sh</a>
+          <a href="#skills" class="nav-item">./skills.py</a>
+          <a href="#projects" class="nav-item">./projects.js</a>
+          <a href="#experience" class="nav-item">./experience.log</a>
+          <a href="#contact" class="nav-item">./contact.md</a>
+        </nav>
+      </div>
+
+      <!-- About Section -->
+      <section id="about" class="section" data-title="ABOUT.TXT">
+        <h2><span class="command-prompt">$</span> cat about.txt</h2>
+        <p>
+          <span style="color: #4ecdc4;">Name:</span> Alex "CyberDev" Rodriguez<br>
+          <span style="color: #4ecdc4;">Role:</span> Full-Stack Hacker & DevOps Ninja<br>
+          <span style="color: #4ecdc4;">Location:</span> Distributed (Remote First)<br>
+          <span style="color: #4ecdc4;">Status:</span> <span style="color: #00ff88;">Available for Elite Projects</span>
+        </p>
+        <p style="margin-top: 1rem;">
+          I'm a backend engineer obsessed with performance, automation, and building systems that feel like magic. 
+          When I'm not architecting distributed systems, you'll find me reverse-engineering protocols, 
+          contributing to open source, or teaching machines to think faster than humans.
+        </p>
+        <p style="color: #ff6b6b; margin-top: 1rem;">
+          > "Code is poetry written in logic" - My Terminal
+        </p>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="section" data-title="SKILLS.JSON">
+        <h2><span class="command-prompt">$</span> python3 analyze_skills.py</h2>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-name">🐍 Backend Development</div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 95%;"></div>
+            </div>
+            <small>Python, Node.js, Go, Rust</small>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">☁️ Cloud & DevOps</div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 90%;"></div>
+            </div>
+            <small>AWS, Docker, Kubernetes, Terraform</small>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">🗄️ Database Systems</div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 88%;"></div>
+            </div>
+            <small>PostgreSQL, MongoDB, Redis, ElasticSearch</small>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">🌐 System Architecture</div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 92%;"></div>
+            </div>
+            <small>Microservices, Event-Driven, Distributed</small>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">🔐 Security & Pentesting</div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%;"></div>
+            </div>
+            <small>OWASP, Penetration Testing, Cryptography</small>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">⚡ Performance Optimization</div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 93%;"></div>
+            </div>
+            <small>Profiling, Caching, Load Balancing</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="section" data-title="PROJECTS.REPO">
+        <h2><span class="command-prompt">$</span> ls -la ./elite_projects/</h2>
+        <div class="project-grid">
+          <div class="project">
+            <div class="project-header">
+              <div class="project-icon" aria-hidden="true">🚀</div>
+              <div class="project-title">HyperScale API Gateway</div>
+            </div>
+            <p>Ultra-high performance API gateway handling 100K+ RPS with intelligent routing, rate limiting, and real-time analytics.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Go</span>
+              <span class="tech-tag">Redis</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Prometheus</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">🔗 Live Demo</a>
+              <a href="#" class="project-link">📂 GitHub</a>
+            </div>
+          </div>
+          
+          <div class="project">
+            <div class="project-header">
+              <div class="project-icon" aria-hidden="true">🔧</div>
+              <div class="project-title">DevOps Automation Suite</div>
+            </div>
+            <p>Complete CI/CD pipeline with automated testing, security scanning, and zero-downtime deployments.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Ansible</span>
+              <span class="tech-tag">Kubernetes</span>
+              <span class="tech-tag">GitLab CI</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">🔗 Demo</a>
+              <a href="#" class="project-link">📂 Code</a>
+            </div>
+          </div>
+          
+          <div class="project">
+            <div class="project-header">
+              <div class="project-icon" aria-hidden="true">🧠</div>
+              <div class="project-title">AI Log Analyzer</div>
+            </div>
+            <p>Machine learning system that predicts system failures by analyzing log patterns and anomalies in real-time.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">ElasticSearch</span>
+              <span class="tech-tag">Kafka</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">🔗 Demo</a>
+              <a href="#" class="project-link">📊 Metrics</a>
+            </div>
+          </div>
+          
+          <div class="project">
+            <div class="project-header">
+              <div class="project-icon" aria-hidden="true">🔐</div>
+              <div class="project-title">CryptoVault Security Suite</div>
+            </div>
+            <p>Enterprise-grade encryption service with HSM integration, key rotation, and compliance reporting.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Rust</span>
+              <span class="tech-tag">HSM</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">gRPC</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">🔗 Demo</a>
+              <a href="#" class="project-link">📋 Docs</a>
+            </div>
+          </div>
+          
+          <div class="project">
+            <div class="project-header">
+              <div class="project-icon" aria-hidden="true">📡</div>
+              <div class="project-title">Real-time Data Pipeline</div>
+            </div>
+            <p>Processes 50M+ events/day with stream processing, data transformation, and multi-cloud replication.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Apache Kafka</span>
+              <span class="tech-tag">Spark</span>
+              <span class="tech-tag">AWS</span>
+              <span class="tech-tag">MongoDB</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">📊 Metrics</a>
+              <a href="#" class="project-link">📂 GitHub</a>
+            </div>
+          </div>
+          
+          <div class="project">
+            <div class="project-header">
+              <div class="project-icon" aria-hidden="true">🌐</div>
+              <div class="project-title">Terminal Web Framework</div>
+            </div>
+            <p>Revolutionary web framework that brings terminal-style interfaces to modern web apps with zero JavaScript.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Go</span>
+              <span class="tech-tag">WebAssembly</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">HTTP/3</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">🔗 Live Demo</a>
+              <a href="#" class="project-link">📖 Docs</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience" class="section" data-title="EXPERIENCE.LOG">
+        <h2><span class="command-prompt">$</span> tail -f career.log</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2023 - Present</div>
+            <div class="timeline-title">Senior DevOps Architect</div>
+            <div class="timeline-company">@ TechCorp Industries</div>
+            <p>Leading cloud infrastructure for 50M+ users. Reduced deployment time by 85% and infrastructure costs by 40%.</p>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-date">2021 - 2023</div>
+            <div class="timeline-title">Backend Engineering Lead</div>
+            <div class="timeline-company">@ ScaleStart Inc.</div>
+            <p>Built distributed systems handling 10M+ daily transactions. Implemented microservices architecture from monolith.</p>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-date">2019 - 2021</div>
+            <div class="timeline-title">Full Stack Developer</div>
+            <div class="timeline-company">@ InnovateLab</div>
+            <p>Developed high-performance web applications. Specialized in real-time data processing and API optimization.</p>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-date">2018 - 2019</div>
+            <div class="timeline-title">Junior Software Engineer</div>
+            <div class="timeline-company">@ CodeCraft Solutions</div>
+            <p>Started journey in backend development. Focused on database optimization and automated testing frameworks.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section" data-title="CONTACT.MD">
+        <h2><span class="command-prompt">$</span> node contact.js --send</h2>
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" class="form-input" required aria-required="true">
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" class="form-input" required aria-required="true">
+            </div>
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" class="form-input" required aria-required="true">
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" class="form-textarea" required aria-required="true"></textarea>
+            </div>
+            <button type="submit" class="form-button">Send Message</button>
+          </form>
+        </div>
+        
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Twitter profile">🐦 Twitter</a>
+          <a href="#" class="social-link" aria-label="LinkedIn profile">💼 LinkedIn</a>
+          <a href="#" class="social-link" aria-label="GitHub profile">🐱 GitHub</a>
+          <a href="#" class="social-link" aria-label="Blog">📝 Blog</a>
+          <a href="#" class="social-link" aria-label="Medium articles">📚 Medium</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-command">
+          $ echo "Copyright © 2023 Alex Chen | Built with 💚 and terminal commands"
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Matrix background effect (optimized version)
+    function createMatrix() {
+      const matrix = document.getElementById('matrix');
+      const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+      
+      // Reduced number of columns for better performance
+      for (let i = 0; i < 30; i++) {
+        const column = document.createElement('div');
+        column.className = 'matrix-column';
+        column.style.left = `${Math.random() * 100}%`;
+        column.style.animationDuration = `${5 + Math.random() * 10}s`;
+        column.style.animationDelay = `${Math.random() * 5}s`;
+        
+        for (let j = 0; j < 20; j++) {
+          const char = document.createElement('span');
+          char.textContent = chars[Math.floor(Math.random() * chars.length)];
+          char.style.opacity = Math.random();
+          column.appendChild(char);
+          column.appendChild(document.createElement('br'));
+        }
+        
+        matrix.appendChild(column);
+      }
+    }
+
+    // Typing effect
+    const typingText = document.querySelector('.typewriter');
+    const phrases = [
+      "Full Stack Developer",
+      "Open Source Contributor",
+      "Linux Enthusiast",
+      "Problem Solver",
+      "Coffee Addict"
+    ];
+    
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isEnd = false;
+    
+    function type() {
+      const currentPhrase = phrases[phraseIndex];
+      
+      if (isDeleting) {
+        typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+      }
+      
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        isEnd = true;
+        setTimeout(() => {
+          isDeleting = true;
+          type();
+        }, 2000);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(type, 500);
+      } else {
+        const speed = isDeleting ? 50 : isEnd ? 100 : 150;
+        setTimeout(type, speed);
+        isEnd = false;
+      }
+    }
+    
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Message sent! (This is a demo)');
+      this.reset();
+    });
+    
+    // Initialize effects
+    window.addEventListener('DOMContentLoaded', () => {
+      createMatrix();
+      setTimeout(type, 1000);
+    });
+  </script>
+</body>
+</html>
